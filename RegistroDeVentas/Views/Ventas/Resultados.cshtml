@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["title"] = "Ver Resultados";
+}
+
+
+<h1>Ver Resultados</h1>
+
+@if (ViewBag.ListaDeVentas.Count > 0)
+{
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#IDVenta</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Cantidad Vendida</th>
+          <th scope="col">Precio Unitario ($)</th>
+          <th scope="col">Total Venta</th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach (var venta in ViewBag.ListaDeVentas)
+          {
+             <tr>
+                 <th scope="row">@venta.IDVenta</th>
+                 <td>@venta.Cliente</td>
+                 <td>@venta.CantidadVendida</td>
+                 <td>@venta.PrecioUnitario</td>
+                 <td>@venta.TotalVenta</td>
+                 </tr>
+          }
+      </tbody>
+    </table>
+}
+else
+{
+    <h2>No hay Ventas</h2>
+}
+
+<a asp-controller="Ventas" asp-action="RegistrarVenta">Registrar Venta</a>
